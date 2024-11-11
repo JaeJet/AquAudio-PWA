@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="manifest" href="/manifest.json">
+        <title>AquaAudio - Home</title>
+    </head>
+    <body>
+        <div class="sidebar">
+            <ul class="sidebarUl">
+                <li class="LinkHead"><a href="index.html">Home</a></li> 
+                <li class="LinkDescription">Explore the latest content!</li> 
+                <hr class="sidebarDivider">
+                <li class="LinkHead"><a href="Compositions.html">Compositions</a></li> 
+                <li class="LinkDescription">View AquAudio's compositions!</li> 
+                <hr class="sidebarDivider">
+                <li class="LinkHead"><a href="about.html">About</a></li> 
+                <li class="LinkDescription">Learn about us!</li> 
+            </ul>
+        </div>
+        <div class="darkblue-bg">
+            <img src="Home.gif" alt="Animated banner for Home Page">
+            <p class="Description">Learn the latest news about AquAudio</p>
+            <div class="contentBox">
+                <p class="icon-left news1"></p>
+                <p class="newsRight"><b>New Song Released!</b><br><i>2/11/24</i><br>NEWS COOL</p>
+                <p class="newsRight"></p>
+                <p class="icon-left news2"></p>
+                <p class="newsRight"><b>RAHHHHH</b><br><i>9/11/24</i><br>AMOGUSGEWGEW GEWG<br>  WEGWE GWEG <br>WEG WEG GEWGWE<br> COOL</p>
+                <p class="newsRight"></p>
+            </div>
+        </div>
+        <div class="bg-grey">
+            <br>
+            <p class="page-end">© AquAudio 2024. No stealing or cringe</p>
+            <br>
+        </div>
+        
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+            import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyBeduakQ0yjYWVqEjZZsqG_MNiJyPWVm5U",
+              authDomain: "aquaudio-pwa.firebaseapp.com",
+              projectId: "aquaudio-pwa",
+              storageBucket: "aquaudio-pwa.firebasestorage.app",
+              messagingSenderId: "494671685271",
+              appId: "1:494671685271:web:a14514387f53f4c08a2bd2",
+              measurementId: "G-BBL8CX3G8P"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = GetFirestore(app); 
+
+            const analytics = getAnalytics(app);
+          </script>
+        <script src="db.js"></script>
+        <script>
+            if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('/sw.js', { scope: '/' });
+            }
+        </script>
+        
+    </body>
+</html>

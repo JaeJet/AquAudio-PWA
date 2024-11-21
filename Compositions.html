@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="manifest" href="js/manifest.json">
+        <title>AquaAudio - Compositions</title>
+    </head>
+    <body>
+        <button id="lightmodecomp" class="lightmodebutton">
+            Turn on light mode
+        </button> 
+        <div class="sidebar" id="sidebarb">
+            <ul class="sidebarUl">
+                <li class="LinkHead"><a href="index.html">Home</a></li> 
+                <li class="LinkDescription">Explore the latest content!</li> 
+                <hr class="sidebarDivider" id="divide1">
+                <li class="LinkHead"><a href="Compositions.html">Compositions</a></li> 
+                <li class="LinkDescription">View AquAudio's compositions!</li> 
+                <hr class="sidebarDivider" id="divide2">
+                <li class="LinkHead"><a href="about.html">About</a></li> 
+                <li class="LinkDescription">Learn about us!</li> 
+            </ul>
+        </div>
+        <div class="darkblue-bg" id="bg">
+            <img src="img/Composition Banner.gif" alt="Animated banner for Composition Page">
+            <p class="Description" id='desc'>Take a look at our music compositions!</p>
+            <div class="contentBox" id="contentbox">
+                <h2 class="compName" id="song1">S.I.N</h2>
+                <img src="img/SIN.jpg" alt="Icon for SIN." class="songIcon-right">
+                <audio controls>
+                    <source src="Music/S.I.N.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+                <div id="commentsDisplaySin" class="comments">
+                    <h3>Comments</h3>
+                    <!-- Comments will be appended here -->
+                </div>
+                <div class="commentsBox">
+                    <form>
+                        <label> 
+                            Username: <input id="usernameSin" class="username"> 
+                        </label> 
+                    </form>
+                    <textarea class="comment" id="commentSin" placeholder="Add your comments here!" rows="4"></textarea>
+                    <button id="submitSin" class="musicButton"> 
+                        Submit Comment
+                    </button> 
+                    <button id="deleteSin" class="musicButton"> 
+                        Delete All Comments
+                    </button> 
+                </div>
+               
+            </div>
+            <br><br><br>
+            <div class="contentBox">
+                <h2 class="compName" id="song2">C.O.S</h2>
+                <img src="img/COS.jpg" alt="Icon for COS." class="songIcon-right">
+                <audio controls>
+                    <source src="Music/C.O.S.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                  </audio>
+                  <div id="commentsDisplayCos" class="comments">
+                    <h3>Comments</h3>
+                    <!-- Comments will be appended here -->
+                </div>
+                <div class="commentsBox">
+                    <form>
+                        <label> 
+                            Username: <input id="usernameCos" class="username"> 
+                        </label> 
+                    </form>
+                    <textarea class="comment" id="commentCos" placeholder="Add your comments here!" rows="4"></textarea>
+                    <button id="submitCos" class="musicButton"> 
+                        Submit Comment
+                    </button> 
+                    <button id="deleteCos" class="musicButton"> 
+                        Delete All Comments
+                    </button> 
+                </div>
+            </div>
+            <br><br><br>
+            <div class="contentBox">
+                <h2 class="compName" id="song3">T.A.N</h2>
+                <img src="img/TAN.jpg" alt="Icon for TAN." class="songIcon-right">
+                <audio controls>
+                    <source src="Music/T.A.N.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                  </audio>
+                  <div id="commentsDisplayTan" class="comments">
+                    <h3>Comments</h3>
+                    <!-- Comments will be appended here -->
+                </div>
+                <div class="commentsBox">
+                    <form>
+                        <label> 
+                            Username: <input id="usernameTan" class="username"> 
+                        </label> 
+                    </form>
+                    <textarea class="comment" id="commentTan" placeholder="Add your comments here!" rows="4"></textarea>
+                    <button id="submitTan" class="musicButton"> 
+                        Submit Comment
+                    </button> 
+                    <button id="deleteTan" class="musicButton"> 
+                        Delete All Comments
+                    </button> 
+                </div>
+            </div>
+            <div class="bg-grey">
+                <br>
+                <p class="page-end">© AquAudio 2024. No stealing or cringe</p>
+                <br>
+            </div>
+            
+        </div>
+    
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+            import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyBeduakQ0yjYWVqEjZZsqG_MNiJyPWVm5U",
+              authDomain: "aquaudio-pwa.firebaseapp.com",
+              projectId: "aquaudio-pwa",
+              storageBucket: "aquaudio-pwa.firebasestorage.app",
+              messagingSenderId: "494671685271",
+              appId: "1:494671685271:web:a14514387f53f4c08a2bd2",
+              measurementId: "G-BBL8CX3G8P"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            async function addComment(username, comment, music) {
+                try {
+                    const docRef = await addDoc(collection(db, music), {
+                        username: username,
+                        comment: comment,
+                        createdAt: new Date().toISOString()
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                } catch (e) {
+                    console.error("Error adding document:",e);
+                }
+            }
+
+
+            async function displayComments(music) {
+                // Let is like const, but it can be changed
+                let commentsDisplay = null
+                if (music == "SIN") {
+                    commentsDisplay = document.getElementById("commentsDisplaySin");
+                } else if (music == "COS") {
+                    commentsDisplay = document.getElementById("commentsDisplayCos");
+                } else if (music == "TAN") {
+                    commentsDisplay = document.getElementById("commentsDisplayTan");
+                }
+                
+                commentsDisplay.innerHTML = ""; // Clear previous comments
+
+                try {
+                    const allDocs = await getDocs(collection(db, music));
+                    allDocs.forEach((item) => {
+                        const ID = item.id;
+                        if (ID == '1' || ID == '2' || ID == '3') {
+                        console.log("Skipped")
+                        } else {
+                        const data = item.data();
+                        const commentElement = document.createElement("div");
+                        commentElement.classList.add("commentItem");
+                        commentElement.innerHTML = `<i>${(data.createdAt).substr(0,10)}, ${(data.createdAt).substr(14,5)}</i> -> <strong>${data.username}:</strong> ${data.comment}`;
+                        commentsDisplay.appendChild(commentElement);
+                        const commentButton = document.createElement("button");
+                        commentButton.innerHTML = "X"
+                        commentButton.classList.add("commentDelete");
+                        commentButton.setAttribute("doc-id", item.id)
+                        commentElement.appendChild(commentButton);
+                        }
+                        
+                    });
+                } catch (e) {
+                    console.error("Error fetching comments:", e);
+                }
+            }
+            
+            async function deleteComments(music) {
+                let commentsDisplay = null
+                if (music == "SIN") {
+                    commentsDisplay = document.getElementById("commentsDisplaySin");
+                } else if (music == "COS") {
+                    commentsDisplay = document.getElementById("commentsDisplayCos");
+                } else if (music == "TAN") {
+                    commentsDisplay = document.getElementById("commentsDisplayTan");
+                }
+                commentsDisplay.innerHTML = ""; // Clear previous comments
+
+                try {
+                    const allDocs = await getDocs(collection(db, music));
+                    allDocs.forEach((item) => {
+                        const ID = item.id;
+                        if (ID == '1' || ID == '2' || ID == '3') {
+                        console.log("Skipped")
+                    } else {
+                        deleteDoc(doc(db, music, ID));
+
+                    }
+                    });
+
+                } catch (e) {
+                    console.error("Error deleting all comments:", e);
+                }
+            }
+            
+            async function deleteComment(music, docId) {
+                try {
+                    await deleteDoc(doc(db, music, docId));
+                } catch (e) {
+                    console.error("Error deketing single comments:", e);
+                }
+            }
+            
+            
+            document.getElementById("submitSin").addEventListener("click", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("usernameSin").value;
+            const comment = document.getElementById("commentSin").value;
+            if (username && comment) {
+                addComment(username, comment, "SIN");
+                displayComments("SIN");
+                
+            } else {
+                console.log("Please enter both a username and a comment.");
+            }
+        });
+
+        document.getElementById("submitCos").addEventListener("click", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("usernameCos").value;
+            const comment = document.getElementById("commentCos").value;
+            if (username && comment) {
+                addComment(username, comment, "COS");
+                displayComments("COS");
+                
+            } else {
+                console.log("Please enter both a username and a comment.");
+            }
+        });
+
+        document.getElementById("submitTan").addEventListener("click", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("usernameTan").value;
+            const comment = document.getElementById("commentTan").value;
+            if (username && comment) {
+                addComment(username, comment, "TAN");
+                displayComments("TAN");
+                
+            } else {
+                console.log("Please enter both a username and a comment.");
+            }
+        });
+
+
+        document.getElementById("deleteSin").addEventListener("click", function(event) {
+            event.preventDefault();
+            deleteComments("SIN")
+            console.log("DeleteAll");
+            
+        });
+
+        document.getElementById("deleteCos").addEventListener("click", function(event) {
+            event.preventDefault();
+            deleteComments("COS")
+            console.log("DeleteAll");
+            
+        });
+
+        document.getElementById("deleteTan").addEventListener("click", function(event) {
+            event.preventDefault();
+            deleteComments("TAN")
+            console.log("DeleteAll");
+            
+        });
+        
+
+        document.getElementById("commentsDisplaySin").addEventListener("click", function(event) {
+        if (event.target.classList.contains("commentDelete")) {
+            const docId = event.target.getAttribute("doc-id");
+            deleteComment("SIN", docId);
+            displayComments("SIN");
+        }
+        });
+
+        document.getElementById("commentsDisplayCos").addEventListener("click", function(event) {
+        if (event.target.classList.contains("commentDelete")) {
+            const docId = event.target.getAttribute("doc-id");
+            deleteComment("COS", docId);
+            displayComments("COS");
+        }
+        });
+
+        document.getElementById("commentsDisplayTan").addEventListener("click", function(event) {
+        if (event.target.classList.contains("commentDelete")) {
+            const docId = event.target.getAttribute("doc-id");
+            deleteComment("TAN", docId);
+            displayComments("TAN");
+        }
+        });
+        
+
+        
+
+        displayComments("SIN");
+        displayComments("COS");
+        displayComments("TAN");
+        </script>
+        <script>
+            if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('js/sw.js', { scope: '/' });
+            }
+            </script>
+        <script src="js/functionality_comp.js "></script>
+    </body>
+</html>

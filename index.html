@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <link rel="manifest" href="/manifest.json">
+        <link rel="manifest" href="./manifest.json">
         <title>AquaAudio - Home</title>
     </head>
     <body>
@@ -46,9 +46,15 @@
         <script src="js/functionality.js"></script>
         
         <script>
-            if('serviceWorker' in navigator) {
-              navigator.serviceWorker.register('/sw.js', { scope: '/' });
-            }
+            if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js') // Use `./` to specify it's in the same directory
+            .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.error('Service Worker registration failed:', error);
+        });
+}
             </script>
         
     </body>

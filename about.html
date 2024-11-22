@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <link rel="manifest" href="./manifest.json">
+        <link rel="manifest" href="/AquAudio-PWA/manifest.json">
         <title>AquaAudio - About</title>
     </head>
     <body>
@@ -42,9 +42,15 @@
         </div>
         <script src="js/functionality_about.js"></script>
         <script>
-            if('serviceWorker' in navigator) {
-              navigator.serviceWorker.register('./sw.js', { scope: '/' });
-            }
+            if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/AquAudio-PWA/sw.js', { scope: '/AquAudio-PWA/' })
+        .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+            console.error('Service Worker registration failed:', error);
+        });
+}
             </script>
 
 

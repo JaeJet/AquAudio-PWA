@@ -43,14 +43,14 @@
         <script src="js/functionality_about.js"></script>
         <script>
             if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/AquAudio-PWA/sw.js', { scope: '/AquAudio-PWA/' })
-        .then(registration => {
-            console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch(error => {
-            console.error('Service Worker registration failed:', error);
-        });
-}
+                navigator.serviceWorker.register('/AquAudio-PWA/sw.js', { scope: '/AquAudio-PWA/' })
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+                }
             </script>
 
 

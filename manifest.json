@@ -1,0 +1,17 @@
+{
+    "lang": "en-us",
+    "name": "AquAudio App",
+    "short_name": "AquAudio",
+    "description": "A website where you can browse the works of the company AquAudio!",
+    "start_url": "/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "img/Icon.png",
+            "sizes": "512x512"
+        }
+    ]
+}

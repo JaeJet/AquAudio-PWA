@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="manifest" href="/manifest.json">
+        <title>AquaAudio - Home</title>
+    </head>
+    <body>
+        <button id="lightmode" class="lightmodebutton">
+            Turn on light mode
+        </button> 
+        <div class="sidebar" id="sidebara">
+            <ul class="sidebarUl">
+                <li class="LinkHead"><a href="index.html">Home</a></li> 
+                <li class="LinkDescription">Explore the latest content!</li> 
+                <hr class="sidebarDivider" id="divide1">
+                <li class="LinkHead"><a href="Compositions.html">Compositions</a></li> 
+                <li class="LinkDescription" id="linkdes">View AquAudio's compositions!</li> 
+                <hr class="sidebarDivider" id="divide2">
+                <li class="LinkHead"><a href="about.html">About</a></li> 
+                <li class="LinkDescription" id="linkdes">Learn about us!</li> 
+            </ul>
+        </div>
+        <div class="darkblue-bg" id="bg">
+            <img src="img/Home.gif" alt="Animated banner for Home Page">
+            <p class="Description" id="desc">Learn the latest news about AquAudio</p>
+            <div class="contentBox" id="contentbox">
+                <p class="icon-left news1"></p>
+                <p class="newsRight"><b>New PWA Released!</b><br><i>2/11/24</i><br>AquAudio is proud to announce a<br>brand new PWA, which you<br>are on right now!</p>
+                <p class="newsRight"></p>
+                <br>
+                <p class="icon-left news2"></p>
+                <p class="newsRight"><b>New Song: HELL!</b><br><i>9/11/24</i><br>New song for the hit game<br>Hell SMP. Listen to it today!</p>
+                <p class="newsRight"></p>
+            </div>
+        </div>
+        <div class="bg-grey">
+            <br>
+            <p class="page-end">© AquAudio 2024. No stealing or cringe</p>
+            <br>
+        </div>
+        <script src="js/functionality.js"></script>
+        
+        <script>
+            if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('/sw.js', { scope: '/' });
+            }
+            </script>
+        
+    </body>
+</html>

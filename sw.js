@@ -8,6 +8,7 @@ self.addEventListener('install', event => {
       '/',
       //'/converter.js',
       '/styles.css'
+      '/Compositions.html'
     ]);
   })());
 });

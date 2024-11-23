@@ -179,7 +179,7 @@
                         const data = item.data();
                         const commentElement = document.createElement("div");
                         commentElement.classList.add("commentItem");
-                        commentElement.innerHTML = `<i>${(data.createdAt).substr(0,10)}, ${(data.createdAt).substr(14,5)}</i> -> <strong>${data.username}:</strong> ${data.comment}`;
+                        commentElement.innerHTML = `<i>${(data.createdAt).substr(0,10)}, ${(data.createdAt).substr(11,5)}</i> -> <strong>${data.username}:</strong> ${data.comment}`;
                         commentsDisplay.appendChild(commentElement);
                         const commentButton = document.createElement("button");
                         commentButton.innerHTML = "X"
